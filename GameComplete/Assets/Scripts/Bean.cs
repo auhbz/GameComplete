@@ -17,28 +17,23 @@ public class Bean : MonoBehaviour
         rigBod = GetComponent<Rigidbody2D>();
     }
 
-
     // Update is called once per frame
     private void Update() {
-        // if (input != 0) {
-        //     anim.SetBool("isRunning", true);
-        // } else {
-        //     anim.SetBool("isRunning", false);
-        // }
-        // if (input > 0) {
-        //     transform.eulerAngles = new Vector3(0, 0, 0);
-        // } else if (input < 0) {
-        //     transform.rotate(0,180,0);// = new Vector3(0, 90, 0);
-        // }
-        if (input > 0) {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+
+        if (input != 0) {
             anim.SetBool("isRunning", true);
-        } else if (input < 0) {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            anim.SetBool("isRunning", true);
+             Vector3 scale = transform.localScale;
+            if (input > 0) {
+                scale.x = 1;
+                transform.localScale = scale;
+            } else if (input < 0) {
+                scale.x = -1;
+                transform.localScale = scale;
+            }
         } else {
             anim.SetBool("isRunning", false);
         }
+        
     }
 
     //Physics related update
