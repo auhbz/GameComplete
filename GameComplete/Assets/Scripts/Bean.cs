@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bean : MonoBehaviour
 {
     public float speed;
+    public int health;
+
     private float input;
     
     Rigidbody2D rigBod;
@@ -42,5 +44,12 @@ public class Bean : MonoBehaviour
         input = Input.GetAxisRaw("Horizontal");
         
         rigBod.velocity = new Vector2(input*speed, rigBod.velocity.y);
+    }
+
+    public void TakeDamage(int damageAmount) {
+        health -= damageAmount;
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 }
