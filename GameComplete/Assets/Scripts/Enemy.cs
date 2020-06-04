@@ -28,6 +28,11 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitObject) {
         if (hitObject.tag == "Player") {
             playerScript.TakeDamage(damage);
+            Destroy(gameObject);
         }
+        
+        if (hitObject.tag == "Ground") {
+            Destroy(gameObject);
+        }        
     }
 }
